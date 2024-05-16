@@ -1,5 +1,6 @@
 import WebsocketHandler, { WebsocketHandlerType } from "./WebsocketHandler";
 
+import Header from "./Header";
 import Connection from "./Connection";
 import Messages from "./Messages";
 import InputSend from "./InputSend";
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <>
+      <Header />
       <Connection {...ws} />
       <Messages messages={ws.messages} />
       <InputSend
