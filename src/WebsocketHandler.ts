@@ -13,30 +13,35 @@ const WebsocketHandler = () => {
   const [messages, setMessages] = useState<Message[]>([]);
 
   const connect = () => {
-    setIsLoading(true);
-    if (ws) {
-      ws.close();
+    try {
+      setIsLoading(true);
+      if (ws) {
+        ws.close();
+      }
+      const newWs = new WebSocket(uri);
+      newWs.onopen = () => {
+        console.log("connected");
+        setIsConnected(true);
+        setIsLoading(false);
+      };
+      newWs.onmessage = (msg) => {
+        setMessages((prev) => [...prev, { name: "Server", message: msg.data }]);
+      };
+      newWs.onerror = () => {
+        console.log("disconnected");
+        setIsConnected(false);
+        setIsLoading(false);
+      };
+      newWs.onclose = () => {
+        console.log("disconnected");
+        setIsConnected(false);
+        setIsLoading(false);
+      };
+      setWs(newWs);
+    } catch (e) {
+      console.log(e);
+      setIsLoading(false);
     }
-    const newWs = new WebSocket(uri);
-    newWs.onopen = () => {
-      console.log("connected");
-      setIsConnected(true);
-      setIsLoading(false);
-    };
-    newWs.onmessage = (msg) => {
-      setMessages((prev) => [...prev, { name: "Server", message: msg.data }]);
-    };
-    newWs.onerror = () => {
-      console.log("disconnected");
-      setIsConnected(false);
-      setIsLoading(false);
-    };
-    newWs.onclose = () => {
-      console.log("disconnected");
-      setIsConnected(false);
-      setIsLoading(false);
-    };
-    setWs(newWs);
   };
 
   const disconnect = () => {
