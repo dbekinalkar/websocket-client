@@ -1,20 +1,13 @@
-type ConnectionProps = {
+import React from "react";
+
+const Connection: React.FunctionComponent<{
   isLoading: boolean;
   isConnected: boolean;
   connect: () => void;
   disconnect: () => void;
   uri: string;
   setUri: (uri: string) => void;
-};
-
-const Connection = ({
-  isLoading,
-  isConnected,
-  connect,
-  disconnect,
-  uri,
-  setUri,
-}: ConnectionProps) => {
+}> = ({ isLoading, isConnected, connect, disconnect, uri, setUri }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUri(event.target.value);
   };

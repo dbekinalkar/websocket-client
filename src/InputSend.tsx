@@ -1,11 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-type InputSendProps = {
+const InputSend: React.FunctionComponent<{
   sendMessage: (message: string) => void;
   disabled?: boolean;
-};
-
-const InputSend = ({ sendMessage, disabled }: InputSendProps) => {
+}> = ({ sendMessage, disabled }) => {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {

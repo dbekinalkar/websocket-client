@@ -1,10 +1,10 @@
+import React from "react";
+
 import { Message } from "./WebsocketHandler";
 
-type MessagesProps = {
-  messages: Message[];
-};
-
-const Messages = ({ messages }: MessagesProps) => {
+const Messages: React.FunctionComponent<{ messages: Message[] }> = ({
+  messages,
+}) => {
   return (
     <>
       {messages.map((message, idx) => (
