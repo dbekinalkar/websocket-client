@@ -8,9 +8,11 @@ const Messages = ({ messages }: MessagesProps) => {
   return (
     <>
       {messages.map((message, idx) => (
-        <div key={idx}>
-          <strong>{message.name}: </strong>
-          <span>{message.message}</span>
+        <div key={idx} className="flex gap-4">
+          <h3 className="font-bold">{message.name}: </h3>
+          <p style={{ whiteSpace: "pre-wrap" }} className="font-mono">
+            {message.message}
+          </p>
         </div>
       ))}
     </>
