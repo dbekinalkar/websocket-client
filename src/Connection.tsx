@@ -12,7 +12,9 @@ const Connection: React.FunctionComponent<{
     setUri(event.target.value);
   };
 
-  const handleClick = () => {
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
     if (isConnected) {
       disconnect();
     } else {
@@ -21,7 +23,7 @@ const Connection: React.FunctionComponent<{
   };
 
   return (
-    <div className="flex gap-2">
+    <form className="flex gap-2" onSubmit={handleSubmit}>
       <input
         className="grow input input-bordered"
         type="text"
@@ -33,12 +35,12 @@ const Connection: React.FunctionComponent<{
         className={`${
           isLoading ? "btn-warning" : isConnected ? "btn-error" : "btn-success"
         } btn`}
-        onClick={handleClick}
+        type="submit"
         disabled={isLoading}
       >
         {isLoading ? "Loading..." : isConnected ? "Disconnect" : "Connect"}
       </button>
-    </div>
+    </form>
   );
 };
 
