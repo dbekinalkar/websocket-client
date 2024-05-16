@@ -17,13 +17,14 @@ const InputSend: React.FunctionComponent<{
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex gap-2" onSubmit={handleSubmit}>
       <input
+        className="grow input input-bordered"
         type="text"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <button type="submit" disabled={disabled}>
+      <button className="btn btn-primary" type="submit" disabled={disabled}>
         Send
       </button>
     </form>

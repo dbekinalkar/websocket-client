@@ -3,7 +3,7 @@ import React from "react";
 const Header: React.FunctionComponent = () => {
   return (
     <>
-      <h1>Websocket Client</h1>
+      <h1 className="text-center text-3xl">Websocket Client</h1>
     </>
   );
 };

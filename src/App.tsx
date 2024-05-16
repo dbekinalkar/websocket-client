@@ -9,7 +9,7 @@ function App() {
   const ws: WebsocketHandlerType = WebsocketHandler();
 
   return (
-    <>
+    <div className="container mx-auto px-8">
       <Header />
       <Connection {...ws} />
       <Messages messages={ws.messages} />
@@ -17,7 +17,7 @@ function App() {
         sendMessage={ws.sendMessage}
         disabled={!ws.isConnected || ws.isLoading}
       />
-    </>
+    </div>
   );
 }
 

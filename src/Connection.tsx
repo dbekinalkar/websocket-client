@@ -21,17 +21,24 @@ const Connection: React.FunctionComponent<{
   };
 
   return (
-    <>
+    <div className="flex gap-2">
       <input
+        className="grow input input-bordered"
         type="text"
         value={uri}
         onChange={handleChange}
         disabled={isConnected}
       />
-      <button onClick={handleClick} disabled={isLoading}>
+      <button
+        className={`${
+          isLoading ? "btn-warning" : isConnected ? "btn-error" : "btn-success"
+        } btn`}
+        onClick={handleClick}
+        disabled={isLoading}
+      >
         {isLoading ? "Loading..." : isConnected ? "Disconnect" : "Connect"}
       </button>
-    </>
+    </div>
   );
 };
 
