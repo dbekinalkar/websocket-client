@@ -1,11 +1,11 @@
-import WebsocketHandler from "./WebsocketHandler";
+import WebsocketHandler, { WebsocketHandlerType } from "./WebsocketHandler";
 
 import Connection from "./Connection";
 import Messages from "./Messages";
 import InputSend from "./InputSend";
 
 function App() {
-  const ws = WebsocketHandler();
+  const ws: WebsocketHandlerType = WebsocketHandler();
 
   return (
     <>

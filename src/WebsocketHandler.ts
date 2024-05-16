@@ -5,7 +5,18 @@ export type Message = {
   message: string;
 };
 
-const WebsocketHandler = () => {
+export type WebsocketHandlerType = {
+  uri: string;
+  setUri: (uri: string) => void;
+  isConnected: boolean;
+  isLoading: boolean;
+  connect: () => void;
+  disconnect: () => void;
+  messages: Message[];
+  sendMessage: (message: string) => void;
+};
+
+const WebsocketHandler = (): WebsocketHandlerType => {
   const [uri, setUri] = useState<string>("");
   const [ws, setWs] = useState<WebSocket | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
